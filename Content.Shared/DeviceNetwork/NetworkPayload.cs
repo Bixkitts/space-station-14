@@ -1,7 +1,7 @@
 using Robust.Shared.Utility;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Content.Server.DeviceNetwork
+namespace Content.Shared.DeviceNetwork
 {
     public sealed class NetworkPayload : Dictionary<string, object?>
     {
