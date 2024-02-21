@@ -2,10 +2,11 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Shared.DeviceNetwork;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Server.DeviceNetwork.Components
+namespace Content.Shared.DeviceNetwork.Components
 {
     [RegisterComponent]
     [Access(typeof(DeviceNetworkSystem), typeof(DeviceNet))]
+    [AutoGenerateComponentState]
     public sealed partial class DeviceNetworkComponent : Component
     {
         public enum DeviceNetIdDefaults
@@ -21,6 +22,7 @@ namespace Content.Server.DeviceNetwork.Components
         }
 
         [DataField("deviceNetId")]
+        [AutoNetworkedField]
         public DeviceNetIdDefaults NetIdEnum { get; set; }
 
         public int DeviceNetId => (int) NetIdEnum;
@@ -29,6 +31,7 @@ namespace Content.Server.DeviceNetwork.Components
         ///     The frequency that this device is listening on.
         /// </summary>
         [DataField("receiveFrequency")]
+        [AutoNetworkedField]
         public uint? ReceiveFrequency;
 
         /// <summary>
@@ -36,6 +39,7 @@ namespace Content.Server.DeviceNetwork.Components
         ///     initialized.
         /// </summary>
         [DataField("receiveFrequencyId", customTypeSerializer: typeof(PrototypeIdSerializer<DeviceFrequencyPrototype>))]
+        [AutoNetworkedField]
         public string? ReceiveFrequencyId;
 
         /// <summary>
@@ -43,6 +47,7 @@ namespace Content.Server.DeviceNetwork.Components
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField("transmitFrequency")]
+        [AutoNetworkedField]
         public uint? TransmitFrequency;
 
         /// <summary>
@@ -50,6 +55,7 @@ namespace Content.Server.DeviceNetwork.Components
         ///     initialized.
         /// </summary>
         [DataField("transmitFrequencyId", customTypeSerializer: typeof(PrototypeIdSerializer<DeviceFrequencyPrototype>))]
+        [AutoNetworkedField]
         public string? TransmitFrequencyId;
 
         /// <summary>
@@ -57,6 +63,7 @@ namespace Content.Server.DeviceNetwork.Components
         ///     most recently used.
         /// </summary>
         [DataField("address")]
+        [AutoNetworkedField]
         public string Address = string.Empty;
 
         /// <summary>
@@ -64,6 +71,7 @@ namespace Content.Server.DeviceNetwork.Components
         ///     generated address will be created whenever this device connects to a network.
         /// </summary>
         [DataField("customAddress")]
+        [AutoNetworkedField]
         public bool CustomAddress = false;
 
         /// <summary>
@@ -85,6 +93,7 @@ namespace Content.Server.DeviceNetwork.Components
         ///     that do not have a visible UI.
         /// </summary>
         [DataField("examinableAddress")]
+        [AutoNetworkedField]
         public bool ExaminableAddress;
 
         /// <summary>

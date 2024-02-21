@@ -1,6 +1,7 @@
-using Content.Server.DeviceNetwork.Components;
+using Content.Shared.DeviceNetwork.Components;
 using Robust.Shared.Random;
-using static Content.Server.DeviceNetwork.Components.DeviceNetworkComponent;
+using static Content.Shared.DeviceNetwork.Components.DeviceNetworkComponent;
+using Content.Shared.DeviceNetwork;
 
 namespace Content.Server.DeviceNetwork;
 
@@ -11,7 +12,7 @@ namespace Content.Server.DeviceNetwork;
 ///     This basically just makes <see cref="DeviceNetworkComponent"/> accessible via their addresses and frequencies on
 ///     some network.
 /// </remarks>
-public sealed class DeviceNet
+public sealed class DeviceNet : SharedDeviceNet
 {
     /// <summary>
     ///     Devices, mapped by their "Address", which is just an int that gets converted to Hex for displaying to users.
